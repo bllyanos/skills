@@ -112,3 +112,29 @@ When writing the code (HTML/CSS, React, Tailwind, etc.):
 3. **Motion:** Keep animations snappy and physical. Use `cubic-bezier` timing functions for spring-like or mechanical transitions. Avoid slow, linear fades.
 
 **CRITICAL INSTRUCTION:** Do not narrate your design choices in the response. Analyze the user's request, select the most appropriate high-fidelity paradigm (e.g., Bento Grid with Soft Brutalism), and deliver the impeccably formatted code.
+
+## Project Bootstrapping: The DESIGN.md Foundation
+
+When a user initiates a frontend project (e.g., "build me a dashboard," "create a landing page," "design an admin panel"), do NOT start writing components immediately. First, generate a `DESIGN.md` file that serves as the project's immutable design contract.
+
+### Step 1: Paradigm Selection
+
+Analyze the project's subject matter and audience. Using the Thematic Heuristics above, autonomously select exactly ONE paradigm. Do not offer options to the user. State your choice in one sentence.
+
+### Step 2: Concrete Specification
+
+Translate the abstract rules of the chosen paradigm into project-specific, measurable values. The DESIGN.md must include:
+
+- **Paradigm**: Name and one-sentence rationale.
+- **Color System**: Exact `:root` CSS variables with hex values. Define the 90/9/1 dominance rule. Specify WCAG targets.
+- **Typography**: Exact font family names, sizing scale (e.g., display: 48px, heading: 24px, body: 16px), letter-spacing values, line-height ratios.
+- **Geometry**: Exact border-radius scale (e.g., sm: 4px, md: 12px, lg: 24px), grid structure description, spacing scale (multiples of 4px or 8px).
+- **Tactile Rules**: Shadow definitions, border styles, interactive state transitions (hover, active) with exact CSS values.
+- **Iconography**: Selected library and stroke-weight rationale.
+- **Component Primitives**: Buttons, cards, inputs — described with exact CSS property values, not vague adjectives.
+
+### Step 3: Lock-in
+
+End DESIGN.md with: "All subsequent code must strictly adhere to this specification. No deviations without updating this document."
+
+Only after DESIGN.md is written and saved should you proceed to implement any HTML, CSS, React, or other components.
