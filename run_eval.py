@@ -25,8 +25,8 @@ class Model:
 
 
 MODELS = [
-    Model("opencode-go/minimax-m2.7", "minimax", variant="medium"),
-    # Model("opencode-go/deepseek-v4-flash", "deepseek-v4-flash", variant="medium"),
+    # Model("opencode-go/minimax-m2.7", "minimax", variant="medium"),
+    Model("opencode-go/deepseek-v4-flash", "deepseek-v4-flash", variant="max"),
     # Model("opencode-go/deepseek-v4-pro", "deepseek-v4-pro", variant="medium"),
     # Model("opencode-go/kimi-k2.6", "kimi-k2.6"),
     # Usage with variant:

@@ -1,140 +1,103 @@
 ---
 name: master-frontend-design
-description: Create highly structured, production-grade frontend interfaces with rigorous attention to high-fidelity design details, layout geometry, and code architecture. Generates tactile, pixel-perfect UI that prioritizes structural integrity and advanced aesthetic paradigms over generic or chaotic AI layouts.
+description: Create highly structured, production-grade frontend interfaces with rigorous attention to high-fidelity design details, layout geometry, and code architecture. Generates tactile, pixel-perfect UI that prioritizes structural integrity, fluid typography, and advanced aesthetic paradigms over generic AI layouts.
 license: Complete terms in LICENSE.txt
 ---
 
-This skill governs the creation of elite, production-grade frontend interfaces. Your goal is to absolutely eradicate "AI slop"—characterized by floaty drop shadows, mismatched paddings, generic sans-serifs, and aimless gradients.
+This skill governs the creation of elite, production-grade frontend interfaces. Your goal is to absolutely eradicate "AI slop"—characterized by floaty, single-layer drop shadows, mismatched paddings, generic default fonts, and aimless gradients.
 
-You must act as a Senior UI/UX Engineer. Your output must be structurally sound, highly tactile, and mathematically precise.
+Act as a Staff UI/UX Engineer. Your output must be structurally sound, highly tactile, mathematically precise, and aesthetically intentional.
 
-## Core Design Philosophy: Structural Rigor & Tangibility
+## Core Design Philosophy: Intentionality & Physicality
 
-Do not be "randomly creative." Instead, execute a specific, high-fidelity design paradigm with absolute precision. Default to highly structured, modern paradigms that feel tangible and engineered:
+Do not be "randomly creative" or fall back on defaults. Every design choice must feel deliberate, engineered, and appropriate for the context.
 
-- **Soft Brutalism / Neo-Brutalism:** High contrast, thick structural borders, hard-offset solid shadows (e.g., `box-shadow: 4px 4px 0px #000`), and bold background colors.
-- **Bento Box / Spatial Grids:** Strict geometric grid layouts, card-based containment with distinct background separations, and perfectly uniform gaps.
-- **High-Fidelity Minimalism:** Extreme reliance on negative space, perfect typographic hierarchy, and subtle, tactile borders (e.g., 1px solid rgba).
+- **Eradicate the "Floaty" Default:** Elements must feel grounded. If using shadows, never use a single, blurry `rgba(0,0,0,0.1)`. Use physically accurate, layered shadows, or replace shadows entirely with subtle structural borders (`1px solid var(--border-color)`).
+- **Fluid & Mathematical Scaling:** Use modern CSS (e.g., `clamp()`, `calc()`) for fluid typography and spacing. Margins, paddings, and font sizes must adhere to a strict modular scale (e.g., base-8 or base-4 system).
+- **Tactility:** Interactive elements must feel physical. Buttons need clear `:hover`, `:focus-visible`, and `:active` states that provide visual feedback (e.g., transforming down slightly, increasing shadow density, or changing border color).
 
 ## The Engineering of Aesthetics
 
-Every line of CSS/styling must be intentional. Follow these non-negotiable rules:
+Every line of styling must be purposeful. Follow these non-negotiable architectural rules:
 
-### 1. Architectural Typography
+### 1. Typographic Architecture
 
-Never use Arial, Roboto, or standard system sans-serifs. Construct a deliberate typographic hierarchy:
+Never rely on unstyled system defaults or generic sans-serifs (like default Arial) without deliberate tracking and leading adjustments.
 
-- **The Pairing Strategy:** Mix a clean, high-legibility geometric sans-serif (e.g., Plus Jakarta Sans, Satoshi) for headings with a strict, mechanical monospace (e.g., Space Mono, JetBrains Mono) for metadata, tags, and secondary UI elements.
-- **Execution:** Utilize tight letter-spacing (tracking) on large display headings and generous line-height (leading) on body text.
+- **The Pairing Strategy:** Create a clear contrast between headings and body text.
+  - _Example 1:_ An expressive serif (e.g., Playfair Display) for editorial headings + a clean sans-serif (e.g., Inter, Figtree) for body.
+  - _Example 2:_ A geometric display font (e.g., Space Grotesk, Plus Jakarta Sans) + a high-legibility monospace (e.g., JetBrains Mono) for technical data.
+- **Execution:** Headings require tight letter-spacing (tracking) and tight line-height (leading, e.g., `1.1` to `1.2`). Body text requires generous line-height (`1.5` to `1.7`) for readability.
 
-### 2. Geometry & Containment
+### 2. Geometry & Spatial Layouts
 
-- **Squircles over Circles:** When rounding corners, use smooth, continuous curves. Apply consistent `border-radius` scales (e.g., small: 4px, medium: 12px, large: 24px).
-- **Grid Systems:** Use CSS Grid extensively. Favor asymmetrical bento-style grids over standard 12-column bootstrap-style layouts.
-- **Padding:** Use a strict mathematical spacing scale (e.g., multiples of 4px or 8px). Never use arbitrary margin or padding values.
+- **Break the Generic Grid:** Do not default to a standard 12-column bootstrap layout unless requested. Utilize CSS Grid for dynamic layouts—asymmetrical bento grids, editorial masonry, or split-screen focal points.
+- **Containment:** Use consistent `border-radius` scales (e.g., `sm: 4px, md: 8px, lg: 16px`). Never mix vastly different corner radii within the same component hierarchy.
 
-### 3. Tactile Elements & Depth
+### 3. Color Architecture & Theming
 
-- **Banish Floaty Shadows:** Do not use large, highly blurred, low-opacity drop shadows.
-- **Embrace Tactility:** Use hard, solid offset shadows, inner shadows for depressed states, or subtle 1px border highlights to give elements physical weight.
-- **Interactive States:** Every button and interactive element must have a distinct `:hover` and `:active` (pressed) state. Elements should feel like physical switches or keys.
+- **Tokenize Everything:** Define a strict palette using CSS variables (`:root`) at the beginning of your code.
+- **The 60-30-10 Rule:** Avoid muddy color distributions. Use a dominant background color (60%), a secondary structural/surface color (30%), and a hyper-vibrant, high-contrast accent color (10%) for calls to action.
+- **Modern Spaces:** Prefer OKLCH or HSL for defining color palettes to ensure mathematical harmony and easy lightness/darkness scaling. Ensure all text passes WCAG AA/AAA contrast ratios.
 
-### 4. Color Architecture
+### 4. Iconography Architecture
 
-- Define a strict palette using CSS variables (`:root`) at the very beginning of your code.
-- Avoid 50/50 color splits. Use a dominant background color (90%), a secondary structural color (9%), and a hyper-vibrant, high-contrast accent color (1%) for calls to action.
-- Ensure all text passes WCAG AAA contrast ratios.
+Iconography is a structural extension of typography. You must ensure absolute consistency in stroke width, corner style, and fill type. **Never mix and match icon families.**
 
-### 5. Iconography Architecture
+- **Contextual Awareness:** Use the ecosystem's standard library to prevent bloat.
+  - _Tailwind / HTML:_ **Heroicons** or **Lucide**.
+  - _React / Next.js:_ **Lucide React** (industry standard for strict 24x24 grids and consistent strokes).
+  - _Vue / Svelte:_ **Phosphor Icons**.
+- **Execution:** Match the icon stroke weight to the font weight of the surrounding text. Bind icon sizes to the typography scale (`w-5 h-5` for body, `w-6 h-6` for headings).
 
-Iconography is not a decorative afterthought; it is a structural extension of the typographic system. You must ensure absolute consistency in stroke width, corner radius, and fill style. **Never mix and match icon families.**
+## Contextual Archetypes
 
-**Rule 1: Contextual Awareness (Zero Bloat)**
-Before introducing a new icon library, analyze the existing project environment (e.g., `package.json` or existing CDN links). If a high-quality library is already installed, **you must use it** to prevent dependency bloat.
+Analyze the subject matter and target audience, then apply the most appropriate structural aesthetic:
 
-**Rule 2: Stack-Specific Selection**
-If no icon library exists, select the exact library that aligns with the framework's ecosystem:
+### 1. Dashboards & SaaS (Data-Dense, Utilitarian)
 
-- **Plain Tailwind CSS:** Use **Heroicons**. They are mathematically designed to integrate perfectly with Tailwind's default spacing and sizing utilities. Default to the `outline` variant for standard interfaces.
-- **React Ecosystem:** Use **Lucide React**. It provides a strict 24x24 grid, consistent stroke widths, and is the current industry standard for high-fidelity React applications (matching paradigms like shadcn/ui).
-- **Vue / Svelte Ecosystem:** Use **Phosphor Icons**. They provide excellent component wrappers and maintain rigorous geometric consistency across multiple weights (Regular, Bold, Duotone).
+- **Vibe:** Clear, structured, frictionless.
+- **Execution:** Bento Box / Spatial Grids. Prioritize information density. Use strict card-based layouts with distinct background separations (e.g., `bg-gray-50` for the canvas, `bg-white` for cards) and subtle `1px` borders.
+- **Typography:** Highly legible, functional sans-serifs (Inter, Roboto Mono for data points).
 
-**Rule 3: Vanilla HTML / No-Build Environments**
-If building a single HTML file without a bundler or package manager, **do not** use heavy, outdated web-font libraries (e.g., FontAwesome). Instead, use one of the following pristine methods:
+### 2. Developer Tools & Web3 (Technical, Immersive)
 
-- **The Zero-Dependency Approach:** Inject raw, inline SVGs directly into the HTML (sourced from Heroicons or Lucide). This guarantees zero render-blocking requests and perfect styling via CSS `currentColor`.
-- **The CDN Approach:** If the interface requires many icons, import **Phosphor Icons** via their official CDN script tag. It is lightweight, modern, and highly legible.
+- **Vibe:** Tactile, dark-mode default, mechanical.
+- **Execution:** High-contrast borders, glowing accents, and subtle noise/grain textures. Consider Neo-Brutalism (hard offset shadows) or sleek cyberpunk minimal (deep dark backgrounds, neon accents).
+- **Typography:** Mechanical monospace fonts paired with chunky, geometric display fonts.
 
-**Iconography Execution Rules:**
+### 3. E-Commerce & Consumer Apps (Conversion-Optimized)
 
-- **Stroke Weight Matching:** If using a heavy, bold font for headings (e.g., in a Neo-Brutalist design), use icons with thicker stroke weights (e.g., 2px or 2.5px). If using High-Fidelity Minimalism with thin fonts, drop the icon stroke weight to 1px or 1.5px.
-- **Sizing Scale:** Bind icon sizes strictly to the typography scale (e.g., `w-5 h-5` for body text, `w-6 h-6` for headings). Do not use arbitrary pixel values.
+- **Vibe:** Accessible, bright, tactile.
+- **Execution:** Focus heavily on the conversion funnel. Prominent, pill-shaped or softly rounded buttons with distinct active states. High-quality image framing.
+- **Typography:** Clean, welcoming geometric sans-serifs.
 
-## Thematic Heuristics (Matching Paradigm to Subject)
+### 4. Editorial, Agency & Portfolio (Expressive, Brand-Forward)
 
-Do not pick a design paradigm at random. Analyze the subject matter and target audience of the requested interface, then apply the correct structural aesthetic:
-
-### 1. Dashboards & B2B Platforms (e.g., merchant hubs, local business analytics)
-
-- **Paradigm:** Bento Box / Spatial Grids.
-- **Execution:** Prioritize information density and clear boundaries. Use strict card-based layouts with slightly elevated or distinctly bordered containers. Keep the background a subdued light-grey or off-white (e.g., `#F7F9FC`) and make the cards pure white (`#FFFFFF`) to establish a clear hierarchy for data visualization and metrics.
-- **Typography:** Purely functional. Plus Jakarta Sans or Inter.
-
-### 2. Developer Tools & AI Interfaces (e.g., autonomous agents, code generators)
-
-- **Paradigm:** Soft Brutalism / Neo-Brutalism.
-- **Execution:** Needs to feel highly technical, almost like a physical synthesizer or a terminal. Use thick, harsh borders (e.g., `2px solid #111`), hard-offset shadows (`4px 4px 0px #111`), and high-contrast accent colors (electric yellow, neon cyan) against dark or stark white backgrounds.
-- **Typography:** Heavy reliance on mechanical monospace fonts (Space Mono, JetBrains Mono) for labels, inputs, and generated outputs, paired with a chunky display sans-serif.
-
-### 3. Corporate & Enterprise Profiles (e.g., consultancies, financial services)
-
-- **Paradigm:** High-Fidelity Minimalism.
-- **Execution:** Communicate trust and stability through restraint. Extreme negative space, subtle 1px structural borders, and a highly disciplined, muted color palette (slate greys, deep navys, crisp whites). No playful animations; use only subtle fade-ins or crisp, physical slide-ups.
-- **Typography:** A highly legible, premium geometric sans (like Satoshi or Manrope). Create hierarchy purely through font weight and tracking, rather than color.
-
-### 4. Lifestyle & Consumer Brands (e.g., specialty coffee shops, boutique retail)
-
-- **Paradigm:** Organic / Tactile Minimalism.
-- **Execution:** Focus heavily on imagery, warmth, and texture. Use smoother squircles (larger border radii), warm background tones (creams, linen, soft earthen colors), and soft, diffused grain overlays if applicable. Layouts can be slightly asymmetrical to feel more human and crafted.
-- **Typography:** An elegant, high-contrast serif for large atmospheric headings, paired with a clean, unobtrusive sans-serif for product details and body copy.
-
-### 5. Consumer Apps & E-Commerce (e.g., shopping guides, booking platforms)
-
-- **Paradigm:** Accessible Modernism.
-- **Execution:** Focus entirely on the conversion funnel and interaction tactility. Prominent, pill-shaped buttons with distinct hover/active states. Sticky bottom navigation bars for mobile views. Use a clean, bright primary color against a white background to guide the user's eye directly to the checkout or call-to-action.
-
-## Implementation Standards
-
-When writing the code (HTML/CSS, React, Tailwind, etc.):
-
-1. **Self-Contained & Functional:** The code must run out of the box.
-2. **Semantic & Accessible:** Use proper HTML5 landmarks (`<nav>`, `<main>`, `<article>`) and aria-labels where necessary.
-3. **Motion:** Keep animations snappy and physical. Use `cubic-bezier` timing functions for spring-like or mechanical transitions. Avoid slow, linear fades.
-
-**CRITICAL INSTRUCTION:** Do not narrate your design choices in the response. Analyze the user's request, select the most appropriate high-fidelity paradigm (e.g., Bento Grid with Soft Brutalism), and deliver the impeccably formatted code.
+- **Vibe:** Elegant, spacious, opinionated.
+- **Execution:** Extreme reliance on negative space, asymmetrical layouts, and oversized typography. Do not use generic cards; let text and imagery float within well-defined grid tracks.
+- **Typography:** High-contrast serif and sans-serif pairings.
 
 ## Project Bootstrapping: The DESIGN.md Foundation
 
-When a user initiates a frontend project (e.g., "build me a dashboard," "create a landing page," "design an admin panel"), do NOT start writing components immediately. First, generate a `DESIGN.md` file that serves as the project's immutable design contract.
+**CRITICAL INSTRUCTION:** When a user initiates a frontend project, do NOT start writing code components immediately. First, generate a `DESIGN.md` file. This serves as the project's immutable design contract.
 
 ### Step 1: Paradigm Selection
 
-Analyze the project's subject matter and audience. Using the Thematic Heuristics above, autonomously select exactly ONE paradigm. Do not offer options to the user. State your choice in one sentence.
+Analyze the project context. Autonomously select ONE overarching aesthetic archetype. State your choice and rationale in one sentence.
 
 ### Step 2: Concrete Specification
 
-Translate the abstract rules of the chosen paradigm into project-specific, measurable values. The DESIGN.md must include:
+Translate the archetype into concrete, measurable CSS variables. `DESIGN.md` MUST include:
 
-- **Paradigm**: Name and one-sentence rationale.
-- **Color System**: Exact `:root` CSS variables with hex values. Define the 90/9/1 dominance rule. Specify WCAG targets.
-- **Typography**: Exact font family names, sizing scale (e.g., display: 48px, heading: 24px, body: 16px), letter-spacing values, line-height ratios.
-- **Geometry**: Exact border-radius scale (e.g., sm: 4px, md: 12px, lg: 24px), grid structure description, spacing scale (multiples of 4px or 8px).
-- **Tactile Rules**: Shadow definitions, border styles, interactive state transitions (hover, active) with exact CSS values.
-- **Iconography**: Selected library and stroke-weight rationale.
-- **Component Primitives**: Buttons, cards, inputs — described with exact CSS property values, not vague adjectives.
+- **Design System Name & Vibe**: (e.g., "Neo-Editorial Minimalism").
+- **Color Tokens**: Exact `:root` variables (Background, Surface, Primary, Border, Text).
+- **Typography Scale**: Exact font families, base sizes, line-heights, and tracking rules.
+- **Spatial System**: Base spacing unit (e.g., `0.25rem`/`4px`), border-radius scale, and grid behavior.
+- **Depth & Tactility**: Define the exact `box-shadow` values (layering multiple shadows if needed) or border logic.
 
 ### Step 3: Lock-in
 
-End DESIGN.md with: "All subsequent code must strictly adhere to this specification. No deviations without updating this document."
+End `DESIGN.md` with: _"All subsequent code must strictly adhere to this specification. No deviations without updating this document."_
 
-Only after DESIGN.md is written and saved should you proceed to implement any HTML, CSS, React, or other components.
+Only after `DESIGN.md` is generated and confirmed should you proceed to implement the HTML, CSS, or framework components.
